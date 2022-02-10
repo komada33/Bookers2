@@ -1,1 +1,22 @@
 <%= render 'books/list', books: @book %>
+
+<%= @books.each do |book| %>
+
+<table>
+  <thead>
+    <tr>
+      <td></td>
+      <td>Title</td>
+      <td>Opinion</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= link_to current_user.name user_path(id: current_user) %></td>
+      <td><%= book.title %></td>
+      <td><%= book.opinion %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>

@@ -2,13 +2,16 @@
 <table>
   <tbody>
 
+    <tr><%= image_tag books.user.get_profile_image(100,100) %></tr>
     <tr>
       <th>name</th>
       <th><%= current_user.name %></th>
     </tr>
     <tr>introduction</tr>
+    <tr><%= current_user.introduction %></tr>
   </tbody>
 </table>
+<p><%= link_to "edit user", edit_user_path(current_user) %></p>
 <h1>New Book</h1>
 <%= form_with model: @book, local:true do |f| %>
  <p>Title</p>
