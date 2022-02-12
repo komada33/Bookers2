@@ -1,11 +1,12 @@
+<%= render 'books/list', books: @book %>
 <table>
 
 
   <tbody>
     <tr>
-      <td><%= current_user.name %></td>
-      <td><%= book.title %></td>
-      <td><%= book.opinion %></td>
+      <td><%= @user.name %></td>
+      <td><%= @book.title %></td>
+      <td><%= @book.opinion %></td>
     </tr>
   </tbody>
 </table>
