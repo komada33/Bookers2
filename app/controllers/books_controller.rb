@@ -1,38 +1,52 @@
 class BooksController < ApplicationController
-  def new
-  end
-
   def create
-    @book = Book.new
+    @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book)
+    if @book.save
+      redirect_to book_path(@book.id), notice: 'You have created book successfully.'
+    else
+      render "index"
+    end
   end
 
   def edit
     @book = Book.find(params[:id])
+    @user = @book.user
+    if @user == current_user
+      render "edit"
+    else
+      redirect_to book_path(@book.id)
+    end
   end
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to book_path(@book.id)
+    if @book.update(book_params)
+      redirect_to book_path(@book.id), notice: "You have updated book successfully."
+    else
+      render "edit"
+    end
   end
 
   def index
+    @bookn = Book.new
     @books = Book.all
-    @user = User.find_by(params[:id])
+    @user = current_user
+
   end
 
   def show
-    @book = Book.find_by(params[:id])
-    @user = User.find_by(params[:id])
+
+    @bookn = Book.new
+    @book = Book.find(params[:id])
+    @user = @book.user
+
   end
 
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_path
+    redirect_to books_path(book.id)
   end
 
   private
@@ -42,3 +56,4 @@ class BooksController < ApplicationController
   end
 
 end
+

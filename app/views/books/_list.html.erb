@@ -1,19 +1,32 @@
+<% if @book.errors.any? %>
+    <%= @book.errors.count %>errors
+     <ul>
+        <% @book.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+        <% end %>
+     </ul>
+<% end %>
 <h1>User info</h1>
+
 <table>
   <tbody>
 
-    <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
+    <tr><%= image_tag user.get_profile_image(100,100) %></tr>
     <tr>
       <th>name</th>
-      <th><%= current_user.name %></th>
+      <th><%= user.name %></th>
     </tr>
     <tr>introduction</tr>
-    <tr><%= current_user.introduction %></tr>
+    <tr><%= user.introduction %></tr>
   </tbody>
 </table>
+<% if @user == current_user %>
 <p><%= link_to "edit user", edit_user_path(current_user) %></p>
+<% else %>
+<p><%= link_to "edit user", user_path(id: current_user) %></p>
+<% end %>
 <h1>New Book</h1>
-<%= form_with model: @book, url: '/books', local:true do |f| %>
+<%= form_with model: book, local:true do |f| %>
  <p>Title</p>
  <%= f.text_field :title %>
  <p>Opinion</p>
