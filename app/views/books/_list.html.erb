@@ -1,5 +1,5 @@
-<div class="col-md-3">
-    
+<div class="col-md-4">
+
 <% if book.errors.any? %>
   <%= book.errors.count %>件のエラーが発生しました
   <ul>
@@ -11,29 +11,44 @@
 
 <h1>User info</h1>
 
-<table>
+<table class="table">
   <tbody>
 
     <tr><%= image_tag user.get_profile_image(100,100) %></tr>
     <tr>
-      <th>name</th>
-      <th><%= user.name %></th>
+      <td>name</td>
+      <td><%= user.name %></td>
     </tr>
-    <tr>introduction</tr>
-    <tr><%= user.introduction %></tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= user.introduction %></td>
+    </tr>
   </tbody>
 </table>
+
 <% if @user == current_user %>
-<p><%= link_to "edit user", edit_user_path(current_user) %></p>
-<% else %>
-<p><%= link_to "edit user", user_path(id: current_user) %></p>
+<%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block", method: :get do %>
+<i class="fa-solid fa-user-gear"></i>
 <% end %>
+<% else %>
+<%= link_to user_path(current_user.id), class: "btn btn-outline-secondary btn-block", method: :get do %>
+<i class="fa-solid fa-user-gear"></i>
+<% end %>
+<% end %>
+
+<div>
 <h1>New Book</h1>
 <%= form_with model: book, local:true do |f| %>
  <p>Title</p>
  <%= f.text_field :title %>
+ </div>
+ <div>
  <p>Opinion</p>
  <%= f.text_area :body %>
- <%= f.submit 'Create Book' %>
+ </div>
+ <div>
+ <%= f.submit "Create Book", class: "btn btn-sm btn-success" %>
 <% end %>
+</div>
+
 </div>

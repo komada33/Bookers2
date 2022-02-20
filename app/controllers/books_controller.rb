@@ -5,7 +5,6 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book.id), notice: 'You have created book successfully.'
     else
-      @book = Book.new
       @books = Book.all
       render 'index'
     end
@@ -26,7 +25,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to book_path(@book.id), notice: "You have updated book successfully."
     else
-      render "edit"
+      render 'edit'
     end
   end
 

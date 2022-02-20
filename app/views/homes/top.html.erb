@@ -1,15 +1,20 @@
 <div class="container">
 
-  <div clas="row">
-   <h1>Welcome to Bookers!!</h1>
-   <p>in <span>Booksers,</span></p>
-   <p>you can share and exchenge your opinions , inpression ,<br>
-   and emotions</p>
-   <p>about various books!</p>
-  </div>
+ <div class="row">
+  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 py-3">
+     <h1>Welcome to <i class="fa-solid fa-book"></i>Bookers!!</h1>
 
-  <div class="row">
-   <p><%= link_to "log in", new_user_session_path %></p>
-   <p><%= link_to "Sign up", new_user_registration_path %></p>
+     <p>in <span><i class="fa-solid fa-book"></i><strong>Booksers</strong>,</span></p>
+
+     <p>you can share and exchenge your opinions , inpression , and emotions</p>
+
+     <p>about various books!</p>
+
+
+    <div class="btn-wrapper col-10 mx-auto">
+     <div class="row"><%= link_to "log in", new_user_session_path, class: "btn btn-sm btn-block btn-info mb-3" %></div>
+     <div class="row"><%= link_to "Sign up", new_user_registration_path, class: "btn btn-sm btn-block btn-success" %></div>
+    </div>
   </div>
+ </div>
 </div>

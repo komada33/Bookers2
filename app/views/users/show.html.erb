@@ -1,7 +1,10 @@
+<div class="container">
+<div class="row py-3">
 <%= render 'books/list', book: @book, user: @user %>
 
-
-<table>
+<div class="col-md-8">
+<table class="table table-striped">
+  <h1>Books</h1>
   <thead>
     <tr>
       <td></td>
@@ -19,4 +22,6 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
+</div>
+</div>
