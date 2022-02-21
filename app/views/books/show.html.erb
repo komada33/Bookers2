@@ -1,8 +1,7 @@
 <div class="container">
 <div class="row py-3">
 <%= render 'books/list', book: @bookn, user: @user %>
-
-<div class="col-md-8">
+<div class="col-md-8 offset-md-1">
   <div>
     <h1>Book detail</h1>
   </div>
@@ -18,7 +17,7 @@
       <td><%= @book.body %></td>
       <% if @user == current_user %>
       <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
-      <td><%= link_to "destroy", book_path(@book.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      <td><%= link_to "Destroy", book_path(@book.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
       <% end %>
     </tr>
   </tbody>

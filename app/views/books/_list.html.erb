@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-3">
 
 <% if book.errors.any? %>
   <%= book.errors.count %>件のエラーが発生しました
@@ -28,16 +28,16 @@
 
 <% if @user == current_user %>
 <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block", method: :get do %>
-<i class="fa-solid fa-user-gear"></i>
+<i class="fas fa-user-cog"></i>
 <% end %>
 <% else %>
 <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary btn-block", method: :get do %>
-<i class="fa-solid fa-user-gear"></i>
+<i class="fas fa-user-cog"></i>
 <% end %>
 <% end %>
 
 <div>
-<h1>New Book</h1>
+<h1>New book</h1>
 <%= form_with model: book, local:true do |f| %>
  <p>Title</p>
  <%= f.text_field :title %>
