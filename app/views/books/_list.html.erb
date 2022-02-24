@@ -34,6 +34,7 @@
 <div>
 <h1>New book</h1>
 <%= form_with model: book, local:true do |f| %>
+ <div>
  <p>Title</p>
  <%= f.text_field :title %>
  </div>
@@ -41,7 +42,6 @@
  <p>Opinion</p>
  <%= f.text_area :body %>
  </div>
- <div>
  <%= f.submit "Create Book", class: "btn btn-sm btn-success" %>
 <% end %>
 </div>
